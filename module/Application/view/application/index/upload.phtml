@@ -1,0 +1,25 @@
+<div class="col-lg-4 alert-success">
+
+<?php $form->prepare();?>
+<?php echo $this->form()->openTag($form); ?>
+
+    <div class="form-element">
+        <?php $fileElement = $form->get('image-file'); ?>
+        <?php echo $this->formLabel($fileElement); ?>
+        <?php echo $this->formFile($fileElement); ?>
+        <?php echo $this->formElementErrors($fileElement); ?>
+    </div>
+
+    <button>Submit</button>
+
+<?php echo $this->form()->closeTag(); ?>
+</div>
+
+<form name="upload-form" id="upload-form" method="post" enctype="multipart/form-data">
+    <div class="form-element">
+        <label for="image-file">File excel</label>
+        <input type="file" name="image-file" id="image-file">
+    </div>
+
+    <button>Submit</button>
+</form>
