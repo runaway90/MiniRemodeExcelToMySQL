@@ -21,7 +21,10 @@ class UploadController extends AbstractActionController
             $form->setData($post);
             if ($form->isValid()) {
                 $data = $form->getData();
-                return $this->redirect()->toRoute('upload', ['action' => 'sfsdf']);
+                $dir = 'var/www/html/BudgetControl/module/Application/upload_files/';
+                //Zend_Loader::loadFile($data, $dir, $once=false);
+
+                return $this->redirect()->toRoute('upload', ['action' => 'file_is_load']);
             }
         }
         return new ViewModel([

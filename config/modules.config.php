@@ -4,6 +4,7 @@
  * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
+use Doctrine\DBAL\Driver\PDOMySql\Driver as PDOMySqlDriver;
 
 /**
  * List of enabled modules for this application.
@@ -11,8 +12,11 @@
  * This should be an array of module namespaces used in the application.
  */
 return [
+    'Zend\Db',
     'Zend\Form',
     'Zend\Router',
     'Zend\Validator',
     'Application',
+    'DoctrineModule',
+    'DoctrineORMModule',
 ];

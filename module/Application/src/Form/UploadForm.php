@@ -8,8 +8,10 @@
 
 namespace Application\Form;
 
-use Zend\Form\Element;
+use Zend\Form\Element\File as FileElement;
 use Zend\Form\Form;
+use Zend\InputFilter\FileInput;
+use Zend\InputFilter\InputFilter;
 
 class UploadForm extends Form
 {
@@ -17,15 +19,36 @@ class UploadForm extends Form
     {
         parent::__construct($name, $options);
         $this->addElements();
+        $this->addInputFilter();
+
     }
 
     public function addElements()
     {
-        // File Input
-        $file = new Element\File('image-file');
+        // FileElement
+        $file = new FileElement('excel-file');
         $file->setLabel('File excel')
-             ->setAttribute('id', 'image-file');
+             ->setAttribute('id', 'excel-file');
         $this->add($file);
     }
+/**
+    public function addInputFilter()
+    {
+        $inputFilter = new InputFilter();
 
+        // File Input
+        $fileInput = new FileInput('excel-file');
+        $fileInput->setRequired(true);
+        $fileInput->getFilterChain()->attachByName(
+            'filerenameupload',
+            array(
+                'target'    => './upload_files/.xls',
+                'randomize' => true,
+            )
+        );
+        $inputFilter->add($fileInput);
+
+        $this->setInputFilter($inputFilter);
+    }
+**/
 }
