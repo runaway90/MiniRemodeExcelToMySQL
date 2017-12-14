@@ -1,13 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vitaliibezgin
- * Date: 12/13/17
- * Time: 9:12 AM
- */
 
 namespace Application\Controller;
 
+use Application\Entity\ListOfConcurrent;
 use Application\Entity\ListOfMedicament;
 use \Zend\Db\Adapter\Driver\Pdo\Connection as ConnectionPDO;
 use Doctrine\ORM\EntityManager;
@@ -15,126 +10,89 @@ use Doctrine\ORM\EntityManager;
 class FormattedController
 {
 
-    /**
-     * Doctrine entity manager.
-     * @var EntityManager
-     */
-    private $entityManager;
-
-    public function formattedData()
+    public function rewriteMedicalDB($file)
     {
-    /** @var $em \Doctrine\ORM\EntityManager */
-    $platform = $em->getConnection()->getDatabasePlatform();
-
+        //add new ListOfMedicament
         $listOfMedicament = new ListOfMedicament();
-        $listOfMedicament->getId();
-
-        try {
-        } catch (PDOException $e) {
-            ('Connecting to DataBase have exception: ' . $e->getMessage());
-        }
-    }
-
-
-    public function rewriteDB($file, $columnsLine = 0)
-    {
+        //add new ListOfConcurrent
+        $listOfConcurrent = new ListOfConcurrent();
+        //take and load file in PHPExcel
         $fileExcel = \PHPExcel_IOFactory::load($file);
-        $listOfMedicament = new ListOfMedicament();
+        //take all sheets in file
+        $worksheets = $fileExcel->getAllSheets();
 
-        foreach ($fileExcel->getWorksheetIterator() as $worksheet) {
-            $rowName = "A";
-            $rowCount = PHPExcel_Cell::columnIndexFromString($worksheet->getHighestRow());
-            //$rowIterator=$worksheet->getRowIterator()->seek();
-            for ($row = 0; $row < $rowCount; $row++) {
-                $listOfMedicament->setName($worksheet->getCell('.$rowName.'));
-            }
+        //for all sheets as one
+        foreach ($worksheets as $worksheet) {
 
-            $columnName = substr($rowName, 0, -1);
-            //$columnNameForDB = str_replace(",", " .........", $columnName);
-            //$columnNameForDB = explode(",", $columnName);
-        }
+            $title = $worksheet->getTitle();
 
-        //$connection->prepare("CREATE TABLE " . $tableName . " (" . $columnNameForDB . " NOT NULL)");
-        // Количество строк на листе Excel
-        $rowsCount = $worksheet->getHighestRow();
+            $rowCount = $worksheet->getHighestRow();
+            $rowIterator = $worksheet->getRowIterator();
+            $rowNumber = $rowIterator->seek(1);
 
-        // Перебираем строки листа Excel
-        for ($row = $columnsLine + 1; $row <= $rowsCount; $row++) {
-            // Строка со значениями всех столбцов в строке листа Excel
-            $valueData = "";
+            $columnIterator = $worksheet->getColumnIterator();
+            $columnNumber = $columnIterator->seek(A);
 
-            // Перебираем столбцы листа Excel
-            for ($column = 0; $column < $rowCount; $column++) {
-                // Строка со значением объединенных ячеек листа Excel
-                $merged_value = "";
-                // Ячейка листа Excel
-                $cell = $worksheet->getCellByColumnAndRow($column, $row);
+            $activeCell = $worksheet->getActiveCell();
+            if ($title = 'list_of_medicament'){
 
-                // Перебираем массив объединенных ячеек листа Excel
-                foreach ($worksheet->getMergeCells() as $mergedCells) {
-                    // Если текущая ячейка - объединенная,
-                    if ($cell->isInRange($mergedCells)) {
-                        // то вычисляем значение первой объединенной ячейки, и используем её в качестве значения
-                        // текущей ячейки
-                        $merged_value = $worksheet->getCell(explode(":", $mergedCells)[0])->getCalculatedValue();
-                        break;
+                if($columnNumber = 'A') {
+                    for ($rowNumber = 2; $rowNumber <= $rowCount; $rowNumber++)
+                    {
+                        $listOfMedicament->setName($activeCell);
                     }
+                    $columnIterator->next();
                 }
 
-                // Проверяем, что ячейка не объединенная: если нет, то берем ее значение, иначе значение первой
-                // объединенной ячейки
-                $valueData .= "'" . (strlen($merged_value) == 0 ? $cell->getCalculatedValue() : $merged_value) . "',";
+                if($columnNumber = 'B'){
+                    for ($rowNumber = 2; $rowNumber <= $rowCount; $rowNumber++)
+                    {
+                        $listOfMedicament->setIdConcurrent($this->rebuildString($activeCell));
+                    }
+                }
+            }else{
+                echo 'You haven`t sheets "list_of_medicament". Please change it';
             }
 
-            // Обрезаем строку, убирая запятую в конце
-            $valueData = substr($valueData, 0, -1);
+            if($title = 'list_of_concurrent'){
 
-            // Добавляем строку в таблицу MySQL
-            //$connection->execute("INSERT INTO " . $tableName . " (" . $columnName . ") VALUES (" . $valueData . ")");
+                if($columnNumber = 'A'){
+                    for ($rowNumber = 2; $rowNumber <=$rowCount; $rowNumber++)
+                        {
+                            $listOfConcurrent->setName($activeCell);
+                        }
+                    $columnIterator->next();
+                }
 
+                if($columnNumber = 'B'){
+                    for ($rowNumber = 2; $rowNumber <=$rowCount; $rowNumber++)
+                        {
+                            $listOfConcurrent->setIngrid($activeCell);
+                        }
+                    $columnIterator->next();
+                }
+
+                if($columnNumber = 'C'){
+                    for ($rowNumber = 2; $rowNumber <=$rowCount; $rowNumber++)
+                        {
+                            $listOfConcurrent->setNameConcurrent($activeCell);
+                        }
+                }
+
+            }else{
+                echo 'You haven`t sheets "list_of_medicament" and "list_of_concurrent". Please change it';
+            }
         }
-        // Соединение с базой MySQL
-        //$connection = new mysqli("localhost", "user", "pass", "base");
-        // Выбираем кодировку UTF-8
-        //$connection->set_charset("utf8");
+    }
 
-        // Загружаем файл Excel
-        //$PHPExcel_file = PHPExcel_IOFactory::load("./file.xlsx");
-
-        // Преобразуем первый лист Excel в таблицу MySQL
-        //$fileExcel->setActiveSheetIndex(0);
-        //echo formattedData($fileExcel->getActiveSheet(), $connection, "", 1) ? "OK\n" : "FAIL\n";
-
-        // Перебираем все листы Excel и преобразуем в таблицу MySQL
-        //foreach ($fileExcel->getWorksheetIterator() as $index => $worksheet) {
-        //    echo formattedData($worksheet, $connection, "" . ($index != 0 ? $index : ""), 1) ? "OK\n" : "FAIL\n";
-        //}
-
-/**
-    public function connectWithDB($tableName)
+    /*
+     * @var string $cell
+     */
+    public function rebuildString($cell)
     {
-        $dataBase = new Mysqli\Mysqli(array(
-        'host'     => '127.0.0.1',
-        'database' => $tableName,
-        'username' => 'root',
-        'password' => 'root'));
+        $explodeCell = explode(',', $cell);
 
+        return $explodeCell;
+    }
 
-    }
-        $DB_host = "";
-        $DB_user = "";
-        $DB_pass = "";
-
-         try
-         {
-             $db_con = new \PDO("mysql:host={$DB_host};dbname={$this->tableName}",$DB_user,$DB_pass);
-             $db_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-         }
-         catch(\PDOException $e)
-         {
-             echo "ERROR : ".$e->getMessage();
-         }
-    }
-**/
-    }
 }

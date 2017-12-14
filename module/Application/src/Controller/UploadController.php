@@ -21,10 +21,10 @@ class UploadController extends AbstractActionController
             $form->setData($post);
             if ($form->isValid()) {
                 $data = $form->getData();
-                $dir = 'var/www/html/BudgetControl/module/Application/upload_files/';
-                //Zend_Loader::loadFile($data, $dir, $once=false);
+                $formate = new FormattedController();
+                $formate->rewriteMedicalDB($data);
 
-                return $this->redirect()->toRoute('upload', ['action' => 'file_is_load']);
+                return $this->redirect()->toRoute('file_is_load', ['action' => 'fileIsLoad']);
             }
         }
         return new ViewModel([

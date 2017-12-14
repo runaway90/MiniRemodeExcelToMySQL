@@ -7,6 +7,9 @@
 
 namespace Application;
 
+use Application\Controller\FormattedController;
+use Application\Controller\ListOfMedicament\AddToDBController;
+use Application\Controller\ListOfMedicament\AddToDBFactory;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
@@ -35,6 +38,16 @@ return [
                     ],
                 ],
             ],
+            'file_is_load' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route'    => '/fileIsLoad',
+                    'defaults' => [
+                        'controller' => Controller\FileIsLoadController::class,
+                        'action'     => 'fileIsLoad',
+                    ],
+                ],
+            ],
             'application' => [
                 'type'    => Segment::class,
                 'options' => [
@@ -50,10 +63,9 @@ return [
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
-            Controller\LibController::class => InvokableFactory::class,
-            Controller\MethodController::class => InvokableFactory::class,
             Controller\UploadController::class => InvokableFactory::class,
-
+            AddToDBController::class => AddToDBFactory::class,
+            FormattedController::class => InvokableFactory::class
         ],
     ],
     'view_manager' => [
@@ -67,10 +79,8 @@ return [
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
-            'application/method/method' => __DIR__ . '/../view/application/index/method.phtml',
-            'application/lib/lib' => __DIR__ . '/../view/application/index/lib.phtml',
             'application/upload/upload' => __DIR__ . '/../view/application/index/upload.phtml',
-
+            'application/file_is_load/file_is_load' => __DIR__ . '/../view/application/index/file_is_load.phtml.phtml',
 
         ],
         'template_path_stack' => [
@@ -89,6 +99,11 @@ return [
                     __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver',
                 ],
             ],
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
+            AddToDBController::class => AddToDBFactory::class,
         ],
     ],
 ];

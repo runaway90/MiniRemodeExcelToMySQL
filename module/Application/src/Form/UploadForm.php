@@ -19,7 +19,7 @@ class UploadForm extends Form
     {
         parent::__construct($name, $options);
         $this->addElements();
-        $this->addInputFilter();
+        //$this->addInputFilter();
 
     }
 
@@ -31,7 +31,7 @@ class UploadForm extends Form
              ->setAttribute('id', 'excel-file');
         $this->add($file);
     }
-/**
+
     public function addInputFilter()
     {
         $inputFilter = new InputFilter();
@@ -50,5 +50,5 @@ class UploadForm extends Form
 
         $this->setInputFilter($inputFilter);
     }
-**/
+
 }
