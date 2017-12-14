@@ -12,11 +12,13 @@ use Doctrine\DBAL\Driver\PDOMySql\Driver as PDOMySqlDriver;
  * This should be an array of module namespaces used in the application.
  */
 return [
+    'Zend\Cache',
+    'Zend\Paginator',
     'Zend\Db',
     'Zend\Form',
     'Zend\Router',
     'Zend\Validator',
-    'Application',
     'DoctrineModule',
     'DoctrineORMModule',
+    'Application',
 ];

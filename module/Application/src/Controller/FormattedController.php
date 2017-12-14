@@ -23,6 +23,8 @@ class FormattedController
 
     public function formattedData()
     {
+    /** @var $em \Doctrine\ORM\EntityManager */
+    $platform = $em->getConnection()->getDatabasePlatform();
 
         $listOfMedicament = new ListOfMedicament();
         $listOfMedicament->getId();
@@ -40,14 +42,14 @@ class FormattedController
         $listOfMedicament = new ListOfMedicament();
 
         foreach ($fileExcel->getWorksheetIterator() as $worksheet) {
-            $columnName = "";
-            $columnCount = PHPExcel_Cell::columnIndexFromString($worksheet->getHighestColumn());
-
-            // Перебираем столбцы листа Excel и генерируем строку с именами через запятую
-            for ($column = 0; $column < $columnCount; $column++) {
-                $columnName .= ($columnsLine == 0 ? "column" . $column : $worksheet->getCellByColumnAndRow($column, $columnsLine)->getCalculatedValue()) . ",";
+            $rowName = "A";
+            $rowCount = PHPExcel_Cell::columnIndexFromString($worksheet->getHighestRow());
+            //$rowIterator=$worksheet->getRowIterator()->seek();
+            for ($row = 0; $row < $rowCount; $row++) {
+                $listOfMedicament->setName($worksheet->getCell('.$rowName.'));
             }
-            $columnName = substr($columnName, 0, -1);
+
+            $columnName = substr($rowName, 0, -1);
             //$columnNameForDB = str_replace(",", " .........", $columnName);
             //$columnNameForDB = explode(",", $columnName);
         }
@@ -62,7 +64,7 @@ class FormattedController
             $valueData = "";
 
             // Перебираем столбцы листа Excel
-            for ($column = 0; $column < $columnCount; $column++) {
+            for ($column = 0; $column < $rowCount; $column++) {
                 // Строка со значением объединенных ячеек листа Excel
                 $merged_value = "";
                 // Ячейка листа Excel
@@ -88,7 +90,7 @@ class FormattedController
             $valueData = substr($valueData, 0, -1);
 
             // Добавляем строку в таблицу MySQL
-            $connection->execute("INSERT INTO " . $tableName . " (" . $columnName . ") VALUES (" . $valueData . ")");
+            //$connection->execute("INSERT INTO " . $tableName . " (" . $columnName . ") VALUES (" . $valueData . ")");
 
         }
         // Соединение с базой MySQL
@@ -134,4 +136,5 @@ class FormattedController
          }
     }
 **/
+    }
 }

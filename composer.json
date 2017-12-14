@@ -22,7 +22,9 @@
         "zendframework/zend-inputfilter": "^2.8",
         "phpoffice/phpexcel": "^1.8",
         "zendframework/zend-db": "^2.9",
-        "doctrine/orm": "^2.5"
+        "doctrine/orm": "^2.5",
+        "doctrine/doctrine-orm-module": "^1.1"
+
     },
     "autoload": {
         "psr-4": {
@@ -47,5 +49,8 @@
         ],
         "serve": "php -S 0.0.0.0:8080 -t public public/index.php",
         "test": "phpunit"
+    },
+    "require-dev": {
+        "zfcampus/zf-asset-manager": "^1.2"
     }
 }

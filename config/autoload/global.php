@@ -12,5 +12,18 @@
  */
 
 return [
-    // ...
+        'doctrine' => [
+            'connection' => [
+                'orm_default' => [
+                    'driverClass' => \Doctrine\DBAL\Driver\PDOMySql\Driver::class,
+                    'params' => [
+                        'port' => '3306',
+                        'host' => 'localhost',
+                        'user' => 'root',
+                        'password' => 'root',
+                        'dbname' => 'excel',
+                    ],
+                ],
+            ],
+        ],
 ];
