@@ -2,6 +2,7 @@
 
 namespace Application\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
@@ -71,7 +72,7 @@ class ListOfConcurrent
 
     public function __construct()
     {
-        $this->listOfMedicament = new ListOfMedicament();
+        $this->listOfMedicament = new ArrayCollection();
     }
 
     public function getListOfMedicament()

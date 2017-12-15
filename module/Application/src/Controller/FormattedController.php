@@ -10,12 +10,13 @@ class FormattedController
 
     public function rewriteMedicalDB($filePath)
     {
-        //$objPHPExcel = new \PHPExcel();
+        $reader = new \PHPExcel_Reader_Excel2007();
+        $excel = $reader->load($filePath);
+        $worksheets = $excel->getAllSheets();
+        var_dump($worksheets);
 
-        $objReader = \PHPExcel_IOFactory::createReader('Excel2007');
-        $objPHPExcel=$objReader->load($filePath);
-        $worksheets = $objPHPExcel->getAllSheets();
         //'/var/www/html/ExcelToMySQL/module/Application/upload_files/'
+
         //add new ListOfMedicament
         $listOfMedicament = new ListOfMedicament();
         //add new ListOfConcurrent
@@ -25,7 +26,7 @@ class FormattedController
         foreach ($worksheets as $worksheet) {
 
             $title = $worksheet->getTitle();
-
+            var_dump($title);
             $rowCount = $worksheet->getHighestRow();
             $rowIterator = $worksheet->getRowIterator();
             $rowNumber = $rowIterator->seek(1);

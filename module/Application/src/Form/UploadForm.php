@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vitaliibezgin
- * Date: 12/11/17
- * Time: 12:52 PM
- */
 
 namespace Application\Form;
 
@@ -42,11 +36,11 @@ class UploadForm extends Form
         $fileInput->getFilterChain()
                   ->attachByName('FileRenameUpload',
                       array(
-                          'target' => '/var/www/html/ExcelToMySQL/module/Application/upload_files',
+                          'target' => '/var/www/module/Application/src/UploadFile/',
                           'useUploadName'=>true,
                           'useUploadExtension'=>true,
                           'overwrite'=>true,
-                          'randomize' => false));
+                          'randomize' => true));
 
         $inputFilter->add($fileInput);
         $this->setInputFilter($inputFilter);
