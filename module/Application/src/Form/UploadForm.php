@@ -11,6 +11,7 @@ namespace Application\Form;
 use Zend\Form\Element\File as FileElement;
 use Zend\Form\Form;
 use Zend\InputFilter\FileInput;
+use Zend\InputFilter\Input;
 use Zend\InputFilter\InputFilter;
 
 class UploadForm extends Form
@@ -19,7 +20,7 @@ class UploadForm extends Form
     {
         parent::__construct($name, $options);
         $this->addElements();
-        //$this->addInputFilter();
+        $this->addInputFilter();
     }
 
     public function addElements()
@@ -27,24 +28,27 @@ class UploadForm extends Form
         // FileElement
         $file = new FileElement('excel-file');
         $file->setLabel('File excel')
-             ->setAttribute('id', 'excel-file');
+             ->setAttribute('id', 'excel-file')
+             ->setAttribute("enctype", "multipart/form-data");
         $this->add($file);
     }
 
     public function addInputFilter()
     {
         $inputFilter = new InputFilter();
-        $this->setUseInputFilterDefaults(false);
+        //$this->setUseInputFilterDefaults(false);
         $fileInput = new FileInput('excel-file');
         $fileInput->setRequired(true);
         $fileInput->getFilterChain()
-                  ->attachByName('filerenameupload',
+                  ->attachByName('FileRenameUpload',
                       array(
-                          'target' => '/var/www/html/ExcelToMySQL/module/Application/upload_files/excel.xls',
-                          'randomize' => true));
+                          'target' => '/var/www/html/ExcelToMySQL/module/Application/upload_files',
+                          'useUploadName'=>true,
+                          'useUploadExtension'=>true,
+                          'overwrite'=>true,
+                          'randomize' => false));
 
         $inputFilter->add($fileInput);
-
         $this->setInputFilter($inputFilter);
     }
 

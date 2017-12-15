@@ -8,12 +8,12 @@ use Application\Entity\ListOfMedicament;
 class FormattedController
 {
 
-    public function rewriteMedicalDB($fileName, $filePath)
+    public function rewriteMedicalDB($filePath)
     {
         //$objPHPExcel = new \PHPExcel();
 
         $objReader = \PHPExcel_IOFactory::createReader('Excel2007');
-        $objPHPExcel=$objReader->load($filePath.'/'.$fileName);
+        $objPHPExcel=$objReader->load($filePath);
         $worksheets = $objPHPExcel->getAllSheets();
         //'/var/www/html/ExcelToMySQL/module/Application/upload_files/'
         //add new ListOfMedicament

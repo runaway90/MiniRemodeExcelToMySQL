@@ -4,12 +4,13 @@ namespace Application\Controller;
 use \Application\Form\UploadForm;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use \Zend\Filter\File\Rename;
+use Zend\Form\Element\File;
 
 class UploadController extends AbstractActionController
 {
     public function uploadAction()
     {
+
         $form = new UploadForm('upload');
 
         $request = $this->getRequest();
@@ -19,12 +20,17 @@ class UploadController extends AbstractActionController
                 $request->getFiles()->toArray()
             );
 
+
+            var_dump($post);
             $form->setData($post);
             if ($form->isValid()) {
                 $data = $form->getData();
-                //var_dump($data);
+                //$uploads_dir=realpath(APPLICATION_PATH) . "/../public/Your directory path';
+                
+
+                var_dump($data);
                 $formate = new FormattedController();
-                $formate->rewriteMedicalDB($data["name"],$data["tmp_name"]);
+                $formate->rewriteMedicalDB($data["tmp_name"]);
 
                 return $this->redirect()->toRoute('fileisload', ['action' => 'fileIsLoad']);
             }
