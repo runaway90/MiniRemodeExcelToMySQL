@@ -1,4 +1,50 @@
-<div class="col-lg-4 alert-success">
+<?php
+   if(isset($_FILES['plik'])) {
+       $errors = array();
+       $file_name = $_FILES['plik']['name'];
+       $file_size = $_FILES['plik']['size'];
+       $file_tmp = $_FILES['plik']['tmp_name'];
+       $file_type = $_FILES['plik']['type'];
+       $file_ext = strtolower(end(explode('.', $_FILES['plik']['name'])));
+
+       move_uploaded_file($_FILES['plik']['tmp_name'], '/var/www/module/Application/src/UploadFile/'. $_FILES["plik"]['name']);
+       // /var/www/html/ExcelToMySQL/module/Application/view
+   }
+?>
+
+<html>
+   <body>
+
+      <form action = "" method = "POST" enctype = "multipart/form-data">
+         <input type = "file" name = "plik" />
+         <input type = "submit"/>
+
+         <ul>
+            <li>Sent file: <?php echo $_FILES['plik']['name'];  ?>
+            <li>File tmp_name: <?php echo $_FILES['plik']['tmp_name']; ?>
+            <li>File type: <?php echo $_FILES['plik']['type'] ?>
+         </ul>
+
+      </form>
+
+   </body>
+</html>
+
+
+
+<dev class="col-lg-12 alert-success">
+
+<form action = "/../ExcelToMySQL/module/Application/src/Controller/SimpleUpload.php" method="post" enctype="multipart/form-data">
+    Select file to upload of simple method:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Submit" name="submit">
+</form>
+
+</dev>
+
+
+<div class="col-lg-12 alert-info">
+    With form ZendFramework:
 
 <?php $form->prepare();?>
 <?php echo $this->form()->openTag($form); ?>

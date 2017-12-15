@@ -10,6 +10,12 @@ class UploadController extends AbstractActionController
 {
     public function uploadAction()
     {
+        /**
+         * $target_dir = "uploads/";
+         * $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+         * move_uploaded_file($_FILES["name"], $target_file);
+         * var_dump($_FILES);*/
+
 
         $form = new UploadForm('upload');
 
@@ -25,8 +31,6 @@ class UploadController extends AbstractActionController
             $form->setData($post);
             if ($form->isValid()) {
                 $data = $form->getData();
-                //$uploads_dir=realpath(APPLICATION_PATH) . "/../public/Your directory path';
-                
 
                 var_dump($data);
                 $formate = new FormattedController();
@@ -38,6 +42,6 @@ class UploadController extends AbstractActionController
         return new ViewModel([
             'form' => $form
         ]);
-    }
 
+    }
 }
