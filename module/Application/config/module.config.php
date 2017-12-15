@@ -38,10 +38,10 @@ return [
                     ],
                 ],
             ],
-            'file_is_load' => [
+            'fileisload' => [
                 'type' => Literal::class,
                 'options' => [
-                    'route'    => '/fileIsLoad',
+                    'route'    => '/fileisload',
                     'defaults' => [
                         'controller' => Controller\FileIsLoadController::class,
                         'action'     => 'fileIsLoad',
@@ -65,7 +65,9 @@ return [
             Controller\IndexController::class => InvokableFactory::class,
             Controller\UploadController::class => InvokableFactory::class,
             AddToDBController::class => AddToDBFactory::class,
-            FormattedController::class => InvokableFactory::class
+            Controller\FormattedController::class => InvokableFactory::class,
+            Controller\FileIsLoadController::class => InvokableFactory::class,
+
         ],
     ],
     'view_manager' => [
@@ -80,7 +82,7 @@ return [
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
             'application/upload/upload' => __DIR__ . '/../view/application/index/upload.phtml',
-            'application/file_is_load/file_is_load' => __DIR__ . '/../view/application/index/file_is_load.phtml.phtml',
+            'application/file-is-load/file-is-load' => __DIR__ . '/../view/application/index/fileisload.phtml',
 
         ],
         'template_path_stack' => [

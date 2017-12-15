@@ -56,4 +56,24 @@ class ListOfMedicament
         $this->id_concurrent = $id_concurrent;
     }
 
+     /**
+     * @ORM\ManyToMany(targetEntity="\Application\Entity\ListOfConcurrent", mappedBy="listOfMedicament")
+     */
+    protected $listOfConcurrent;
+
+    public function __construct()
+    {
+        $this->listOfConcurrent = new ListOfConcurrent();
+    }
+
+    public function getListOfConcurrent()
+    {
+        return $this->listOfConcurrent;
+    }
+
+    public function addListOfConcurrent($addConcurrent)
+    {
+        $this->listOfConcurrent[] = $addConcurrent;
+    }
+
 }

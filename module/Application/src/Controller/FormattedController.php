@@ -4,22 +4,22 @@ namespace Application\Controller;
 
 use Application\Entity\ListOfConcurrent;
 use Application\Entity\ListOfMedicament;
-use \Zend\Db\Adapter\Driver\Pdo\Connection as ConnectionPDO;
-use Doctrine\ORM\EntityManager;
 
 class FormattedController
 {
 
-    public function rewriteMedicalDB($file)
+    public function rewriteMedicalDB($fileName, $filePath)
     {
+        //$objPHPExcel = new \PHPExcel();
+
+        $objReader = \PHPExcel_IOFactory::createReader('Excel2007');
+        $objPHPExcel=$objReader->load($filePath.'/'.$fileName);
+        $worksheets = $objPHPExcel->getAllSheets();
+        //'/var/www/html/ExcelToMySQL/module/Application/upload_files/'
         //add new ListOfMedicament
         $listOfMedicament = new ListOfMedicament();
         //add new ListOfConcurrent
         $listOfConcurrent = new ListOfConcurrent();
-        //take and load file in PHPExcel
-        $fileExcel = \PHPExcel_IOFactory::load($file);
-        //take all sheets in file
-        $worksheets = $fileExcel->getAllSheets();
 
         //for all sheets as one
         foreach ($worksheets as $worksheet) {
@@ -51,7 +51,7 @@ class FormattedController
                     }
                 }
             }else{
-                echo 'You haven`t sheets "list_of_medicament". Please change it';
+                //echo 'You haven`t sheets "list_of_medicament". Please change it';
             }
 
             if($title = 'list_of_concurrent'){
@@ -78,9 +78,8 @@ class FormattedController
                             $listOfConcurrent->setNameConcurrent($activeCell);
                         }
                 }
-
             }else{
-                echo 'You haven`t sheets "list_of_medicament" and "list_of_concurrent". Please change it';
+                //echo 'You haven`t sheets "list_of_medicament" and "list_of_concurrent". Please change it';
             }
         }
     }

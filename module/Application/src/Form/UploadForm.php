@@ -20,7 +20,6 @@ class UploadForm extends Form
         parent::__construct($name, $options);
         $this->addElements();
         //$this->addInputFilter();
-
     }
 
     public function addElements()
@@ -35,17 +34,15 @@ class UploadForm extends Form
     public function addInputFilter()
     {
         $inputFilter = new InputFilter();
-
-        // File Input
+        $this->setUseInputFilterDefaults(false);
         $fileInput = new FileInput('excel-file');
         $fileInput->setRequired(true);
-        $fileInput->getFilterChain()->attachByName(
-            'filerenameupload',
-            array(
-                'target'    => './upload_files/.xls',
-                'randomize' => true,
-            )
-        );
+        $fileInput->getFilterChain()
+                  ->attachByName('filerenameupload',
+                      array(
+                          'target' => '/var/www/html/ExcelToMySQL/module/Application/upload_files/excel.xls',
+                          'randomize' => true));
+
         $inputFilter->add($fileInput);
 
         $this->setInputFilter($inputFilter);

@@ -7,10 +7,10 @@
     <orderEntry type="module-library">
       <library name="PHARS">
         <CLASSES>
-          <root url="phar://$MODULE_DIR$/composer_2.phar/" />
+          <root url="phar://$MODULE_DIR$/../BudgetControl/composer_2.phar/" />
         </CLASSES>
         <SOURCES>
-          <root url="phar://$MODULE_DIR$/composer_2.phar/" />
+          <root url="phar://$MODULE_DIR$/../BudgetControl/composer_2.phar/" />
         </SOURCES>
       </library>
     </orderEntry>

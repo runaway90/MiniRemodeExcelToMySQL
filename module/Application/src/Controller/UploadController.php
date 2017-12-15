@@ -4,6 +4,7 @@ namespace Application\Controller;
 use \Application\Form\UploadForm;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use \Zend\Filter\File\Rename;
 
 class UploadController extends AbstractActionController
 {
@@ -21,10 +22,11 @@ class UploadController extends AbstractActionController
             $form->setData($post);
             if ($form->isValid()) {
                 $data = $form->getData();
+                //var_dump($data);
                 $formate = new FormattedController();
-                $formate->rewriteMedicalDB($data);
+                $formate->rewriteMedicalDB($data["name"],$data["tmp_name"]);
 
-                return $this->redirect()->toRoute('file_is_load', ['action' => 'fileIsLoad']);
+                return $this->redirect()->toRoute('fileisload', ['action' => 'fileIsLoad']);
             }
         }
         return new ViewModel([

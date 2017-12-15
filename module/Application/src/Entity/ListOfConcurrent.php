@@ -59,4 +59,33 @@ class ListOfConcurrent
     {
         $this->name_concurrent = $name_concurrent;
     }
+
+    /**
+     * @ORM\ManyToMany(targetEntity="\Application\Entity\ListOfMedicament", inversedBy="$name")
+     * @ORM\JoinTable(name="med_and_conc",
+     *      joinColumns={@ORM\JoinColumn(name="name", referencedColumnName="name_pre")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="name", referencedColumnName="name")}
+     *      )
+     */
+    protected $listOfMedicament;
+
+    public function __construct()
+    {
+        $this->listOfMedicament = new ListOfMedicament();
+    }
+
+    public function getListOfMedicament()
+    {
+        return $this->listOfMedicament;
+    }
+
+    public function addListOfMedicament($addMedicament)
+    {
+        $this->listOfMedicament[] = $addMedicament;
+    }
+
+    public function removeListOfMedicament($removeMedicament)
+    {
+
+    }
 }
