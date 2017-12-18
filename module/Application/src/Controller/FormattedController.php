@@ -12,20 +12,12 @@ class FormattedController
 
     public function rewriteMedicalDB($filePath)
     {
-        //add new ListOfMedicament
-        $listOfMedicament = new ListOfMedicament();
-        //add new ListOfConcurrent
-        $listOfConcurrent = new ListOfConcurrent();
-
         var_dump($filePath);
         $objPHPExcel = \PHPExcel_IOFactory::load($filePath);
-        $objPHPExcel->setActiveSheetIndex(0);
-        $aSheet = $objPHPExcel->getActiveSheet();
-        $countSheet = $objPHPExcel->getSheetCount();
+        $aSheet = $objPHPExcel->getSheetByName('list_of_medicament');
+        //$array = [];
+        $rows = $aSheet->getRowIterator();
 
-        $array = [];
-        for ($aSheet; $aSheet <= $countSheet; $aSheet++){
-            $rows = $aSheet->getRowIterator();
             foreach($rows as $row){
                 $cellIterator = $row->getCellIterator();
                 $item = [];
@@ -35,23 +27,42 @@ class FormattedController
                     str_replace('&reg;','',$formcell);
                     array_push($item, $formcell);
                 }
-                var_dump($item);
+                var_dump($item[1]);
+
                 /**
                  * Doctrine entity manager.
                  * @var $entityManager EntityManager
                  */
                 $addToTable = new AddToDBController($entityManager);
                 $addToTable->addNewInfoToListOfMedicament($item);
-                array_push($array, $item);
-                die();
+                //array_push($array, $item);
+                //die();
             }
-            var_dump($array);
-            //print_r($array);
-            //die();
 
-        }
+        $aSheet = $objPHPExcel->getSheetByName('list_of_concurrent');
+        $rows = $aSheet->getRowIterator();
 
-        return $array;
+            foreach($rows as $row){
+                $cellIterator = $row->getCellIterator();
+                $item = [];
+
+                foreach($cellIterator as $cell){
+                    $formcell = explode(",",$cell->getCalculatedValue());
+                    str_replace('&reg;','',$formcell);
+                    array_push($item, $formcell);
+                }
+                //var_dump($item);
+
+                /**
+                 * Doctrine entity manager.
+                 * @var $entityManager EntityManager
+                 */
+                //$addToTable = new AddToDBController($entityManager);
+                //$addToTable->addNewInfoToListOfConcurrent($item);
+                //array_push($array, $item);
+                //die();
+            }
+
     }
 
         //$reader = new \PHPExcel_Reader_Excel2007();
