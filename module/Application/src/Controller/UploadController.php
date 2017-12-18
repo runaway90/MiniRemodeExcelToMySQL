@@ -25,7 +25,6 @@ class UploadController extends AbstractActionController
                 $root = $data['excel-file']["tmp_name"];
                 $formate = new FormattedController();
                 $formate->rewriteMedicalDB($root);
-
                 return $this->redirect()->toRoute('fileisload', ['action' => 'fileIsLoad']);
             }
         }

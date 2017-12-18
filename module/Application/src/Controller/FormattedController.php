@@ -10,11 +10,41 @@ class FormattedController
 
     public function rewriteMedicalDB($filePath)
     {
-        $reader = new \PHPExcel_Reader_Excel2007();
-        $excel = $reader->load($filePath);
-        $worksheets = $excel->getAllSheets();
-        var_dump($worksheets);
+        var_dump($filePath);
+        $objPHPExcel = \PHPExcel_IOFactory::load($filePath);
+        $objPHPExcel->setActiveSheetIndex(0);
+        $aSheet = $objPHPExcel->getActiveSheet();
+        $countSheet = $objPHPExcel->getSheetCount();
 
+        $array = [];
+        for ($aSheet; $aSheet <= $countSheet; $aSheet++){
+            $rows = $aSheet->getRowIterator();
+            foreach($rows as $row){
+                $cellIterator = $row->getCellIterator();
+                $item = [];
+
+                foreach($cellIterator as $cell){
+                    $formcell = explode(",",$cell->getCalculatedValue());
+                    array_push($item, $formcell);
+                }
+
+                array_push($array, $item);
+            }
+            var_dump($array);
+            die();
+
+        }
+
+        return $array;
+    }
+
+        //$reader = new \PHPExcel_Reader_Excel2007();
+        //$excel = $reader->load($filePath);
+        //$worksheets = $excel->getAllSheets();
+
+        //var_dump($worksheets);
+
+        /**
         //'/var/www/html/ExcelToMySQL/module/Application/upload_files/'
 
         //add new ListOfMedicament
@@ -82,8 +112,8 @@ class FormattedController
             }else{
                 //echo 'You haven`t sheets "list_of_medicament" and "list_of_concurrent". Please change it';
             }
-        }
-    }
+        }*/
+
 
     /*
      * @var string $cell
