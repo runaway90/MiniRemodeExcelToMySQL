@@ -50,5 +50,9 @@ class UploadController extends AbstractActionController
         ]);
     }
 
+    public function isloadAction()
+    {
+        return new ViewModel();
+    }
 
 }
