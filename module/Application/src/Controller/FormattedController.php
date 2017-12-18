@@ -2,14 +2,21 @@
 
 namespace Application\Controller;
 
+use Application\Controller\ListOfMedicament\AddToDBController;
 use Application\Entity\ListOfConcurrent;
 use Application\Entity\ListOfMedicament;
+use Doctrine\ORM\EntityManager;
 
 class FormattedController
 {
 
     public function rewriteMedicalDB($filePath)
     {
+        //add new ListOfMedicament
+        $listOfMedicament = new ListOfMedicament();
+        //add new ListOfConcurrent
+        $listOfConcurrent = new ListOfConcurrent();
+
         var_dump($filePath);
         $objPHPExcel = \PHPExcel_IOFactory::load($filePath);
         $objPHPExcel->setActiveSheetIndex(0);
@@ -25,13 +32,22 @@ class FormattedController
 
                 foreach($cellIterator as $cell){
                     $formcell = explode(",",$cell->getCalculatedValue());
+                    str_replace('&reg;','',$formcell);
                     array_push($item, $formcell);
                 }
-
+                var_dump($item);
+                /**
+                 * Doctrine entity manager.
+                 * @var $entityManager EntityManager
+                 */
+                $addToTable = new AddToDBController($entityManager);
+                $addToTable->addNewInfoToListOfMedicament($item);
                 array_push($array, $item);
+                die();
             }
             var_dump($array);
-            die();
+            //print_r($array);
+            //die();
 
         }
 
@@ -120,9 +136,11 @@ class FormattedController
      */
     public function rebuildString($cell)
     {
-        $explodeCell = explode(',', $cell);
+        $decode = strtr($cell, "®", '');
+        $explodeCell = explode(',', $decode);
 
         return $explodeCell;
     }
+
 
 }

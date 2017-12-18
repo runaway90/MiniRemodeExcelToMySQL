@@ -55,10 +55,10 @@ class ListOfMedicament
     {
         $this->id_concurrent = $id_concurrent;
     }
-
+/**
      /**
      * @ORM\ManyToMany(targetEntity="\Application\Entity\ListOfConcurrent", mappedBy="listOfMedicament")
-     */
+
     protected $listOfConcurrent;
 
     public function __construct()
@@ -75,5 +75,5 @@ class ListOfMedicament
     {
         $this->listOfConcurrent[] = $addConcurrent;
     }
-
+*/
 }

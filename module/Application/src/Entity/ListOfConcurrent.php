@@ -67,7 +67,7 @@ class ListOfConcurrent
      *      joinColumns={@ORM\JoinColumn(name="name", referencedColumnName="name_pre")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="name", referencedColumnName="name")}
      *      )
-     */
+
     protected $listOfMedicament;
 
     public function __construct()
@@ -88,5 +88,5 @@ class ListOfConcurrent
     public function removeListOfMedicament($removeMedicament)
     {
 
-    }
+    }*/
 }

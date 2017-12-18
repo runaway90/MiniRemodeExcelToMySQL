@@ -72,35 +72,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UploadController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Controller/UploadController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding>
-                <element signature="e#41#74#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FormattedController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Controller/FormattedController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-234">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="123">
+              <caret line="21" column="43" lean-forward="false" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
               <folding>
-                <element signature="e#42#82#0#PHP" expanded="true" />
+                <element signature="e#42#104#0#PHP" expanded="true" />
+                <element signature="e#1911#4471#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UploadForm.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Form/UploadForm.php">
+      <file leaf-file-name="ListOfMedicament.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Entity/ListOfMedicament.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="33" column="36" lean-forward="true" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="46" />
+            <state relative-caret-position="-270">
+              <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+              <folding>
+                <element signature="e#939#1414#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListOfConcurrent.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Entity/ListOfConcurrent.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="537">
+              <caret line="90" column="5" lean-forward="false" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="7" />
+              <folding>
+                <element signature="e#1130#1898#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddToDBController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Controller/ListOfMedicament/AddToDBController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="339">
+              <caret line="25" column="24" lean-forward="false" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -183,17 +196,17 @@
         <option value="$PROJECT_DIR$/module/Application/src/Form/UploadForm.php" />
         <option value="$PROJECT_DIR$/module/Application/src/Controller/UploadController.php" />
         <option value="$PROJECT_DIR$/module/Application/src/Controller/FormattedController.php" />
-        <option value="$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Entity/ListOfMedicament.php" />
         <option value="$PROJECT_DIR$/../ExcelToMySQL/module/Application/config/module.config.php" />
-        <option value="$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Controller/ListOfMedicament/AddToDBController.php" />
         <option value="$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Controller/FileIsLoadController.php" />
         <option value="$PROJECT_DIR$/../ExcelToMySQL/module/Application/view/layout/layout.phtml" />
         <option value="$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Controller/SimpleUpload.php" />
         <option value="$PROJECT_DIR$/../ExcelToMySQL/Dockerfile" />
         <option value="$PROJECT_DIR$/../ExcelToMySQL/module/Application/view/application/index/upload.phtml" />
         <option value="$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Form/UploadForm.php" />
-        <option value="$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Entity/ListOfConcurrent.php" />
         <option value="$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Controller/UploadController.php" />
+        <option value="$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Controller/ListOfMedicament/AddToDBController.php" />
+        <option value="$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Entity/ListOfMedicament.php" />
+        <option value="$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Entity/ListOfConcurrent.php" />
         <option value="$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Controller/FormattedController.php" />
       </list>
     </option>
@@ -357,15 +370,16 @@
       <updated>1512740203176</updated>
       <workItem from="1512740204547" duration="733000" />
       <workItem from="1512743158671" duration="30000" />
-      <workItem from="1512743190814" duration="132157000" />
+      <workItem from="1512743190814" duration="136746000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132920000" />
+    <option name="totallyTimeSpent" value="137509000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1987" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13004981" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -376,7 +390,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22619048" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22619048" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -395,81 +409,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="33" />
+      <option name="time" value="34" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/vendor/doctrine/orm/docs/en/reference/configuration.rst">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="54" column="27" lean-forward="false" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/vendor/doctrine/orm/docs/en/reference/dql-doctrine-query-language.rst">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-968">
-          <caret line="697" column="11" lean-forward="false" selection-start-line="697" selection-start-column="11" selection-end-line="697" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/vendor/doctrine/doctrine-orm-module/config/module.config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="51" column="10" lean-forward="true" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-152">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/vendor/doctrine/doctrine-orm-module/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="373">
-            <caret line="86" column="31" lean-forward="true" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
-            <folding>
-              <marker date="1513180148742" expanded="true" signature="1902:2779" ph="..." />
-              <marker date="1513180148742" expanded="true" signature="1922:2776" ph="..." />
-              <marker date="1513180148742" expanded="true" signature="1944:2769" ph="..." />
-              <marker date="1513180148742" expanded="true" signature="2080:2337" ph="..." />
-              <marker date="1513180148742" expanded="true" signature="2226:2322" ph="..." />
-              <marker date="1513180148742" expanded="true" signature="2532:2758" ph="..." />
-              <marker date="1513180148742" expanded="true" signature="2563:2743" ph="..." />
-              <marker date="1513180148742" expanded="true" signature="2904:3484" ph="..." />
-              <marker date="1513180148742" expanded="true" signature="2924:3481" ph="..." />
-              <marker date="1513180148742" expanded="true" signature="2924:3484" ph="..." />
-              <marker date="1513180148742" expanded="true" signature="2950:3474" ph="..." />
-              <marker date="1513180148742" expanded="true" signature="2950:3481" ph="..." />
-              <marker date="1513180148742" expanded="true" signature="3020:3463" ph="..." />
-              <marker date="1513180148742" expanded="true" signature="3020:3474" ph="..." />
-              <marker date="1513180148742" expanded="true" signature="3129:3448" ph="..." />
-              <marker date="1513180148742" expanded="true" signature="3129:3463" ph="..." />
-              <marker date="1513180148742" expanded="true" signature="3387:3430" ph="..." />
-              <marker date="1513180148742" expanded="true" signature="3387:3448" ph="..." />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/config/autoload/local.php.dist">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -580,37 +524,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="45" column="24" lean-forward="true" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Controller/ListOfMedicament/AddToDBFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Controller/ListOfMedicament/AddToDBController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="50" column="36" lean-forward="false" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/956245a3/9281d373-5a35-44f2-8637-470058f16292/excel.med_and_conc">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Entity/ListOfMedicament.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="63" column="20" lean-forward="false" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -781,23 +694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/956245a3/9281d373-5a35-44f2-8637-470058f16292/excel.list_of_medicament">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Entity/ListOfConcurrent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1332">
-          <caret line="74" column="50" lean-forward="false" selection-start-line="74" selection-start-column="50" selection-end-line="74" selection-end-column="50" />
-          <folding>
-            <element signature="e#38#86#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Controller/SimpleUpload.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
@@ -822,13 +718,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Controller/UploadController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="e#41#74#0#PHP" expanded="true" />
-          </folding>
+    <entry file="das://table:/956245a3/9281d373-5a35-44f2-8637-470058f16292/excel.list_of_concurrent">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/956245a3/9281d373-5a35-44f2-8637-470058f16292/excel.list_of_concurrent">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/956245a3/9281d373-5a35-44f2-8637-470058f16292/excel.list_of_concurrent">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/956245a3/9281d373-5a35-44f2-8637-470058f16292/excel.med_and_conc">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/956245a3/9281d373-5a35-44f2-8637-470058f16292/excel.list_of_concurrent">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/956245a3/9281d373-5a35-44f2-8637-470058f16292/excel.list_of_concurrent">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/956245a3/9281d373-5a35-44f2-8637-470058f16292/excel.list_of_concurrent">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -840,12 +775,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Entity/ListOfMedicament.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-270">
+          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+          <folding>
+            <element signature="e#939#1414#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Controller/ListOfMedicament/AddToDBFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Controller/UploadController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+          <folding>
+            <element signature="e#41#74#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Entity/ListOfConcurrent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="90" column="5" lean-forward="false" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="7" />
+          <folding>
+            <element signature="e#1130#1898#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Controller/ListOfMedicament/AddToDBController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="25" column="24" lean-forward="false" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/956245a3/9281d373-5a35-44f2-8637-470058f16292/excel.list_of_medicament">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../ExcelToMySQL/module/Application/src/Controller/FormattedController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-234">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="123">
+          <caret line="21" column="43" lean-forward="false" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
           <folding>
-            <element signature="e#42#82#0#PHP" expanded="true" />
+            <element signature="e#42#104#0#PHP" expanded="true" />
+            <element signature="e#1911#4471#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
