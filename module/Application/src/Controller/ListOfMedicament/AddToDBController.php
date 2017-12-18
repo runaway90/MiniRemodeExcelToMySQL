@@ -22,8 +22,8 @@ class AddToDBController
     public function addNewInfoToListOfMedicament($data)
     {
         $add = new ListOfMedicament();
-        $add->setIdConcurrent($data[1]);
-        $add->setName($data[0]);
+        $add->setIdConcurrent($data['id_concurrent']);
+        $add->setName($data['name']);
 
         $this->entityManager->persist($add);
         $this->entityManager->flush();
@@ -32,9 +32,9 @@ class AddToDBController
     public function addNewInfoToListOfConcurrent($data)
     {
         $add = new ListOfConcurrent();
-        $add->setName($data[0]);
-        $add->setIngrid($data[1]);
-        $add->setNameConcurrent($data[2]);
+        $add->setName($data['name_pre']);
+        $add->setIngrid($data['ingrid']);
+        $add->setNameConcurrent($data['name_concurrent']);
 
         $this->entityManager->persist($add);
         $this->entityManager->flush();

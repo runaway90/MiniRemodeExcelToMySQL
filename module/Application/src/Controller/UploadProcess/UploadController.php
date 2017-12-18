@@ -1,12 +1,29 @@
 <?php
-namespace Application\Controller;
+namespace Application\Controller\UploadProcess;
 
 use \Application\Form\UploadForm;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Doctrine\ORM\EntityManager;
 
 class UploadController extends AbstractActionController
 {
+    /**
+     * @var $entityManager EntityManager
+     */
+    private $entityManager;
+
+    /**
+     * @var $uploadManager UploadManager
+     */
+    private $uploadManager;
+
+    public function __construct($entityManager, $uploadManager)
+    {
+        $this->entityManager = $entityManager;
+        $this->uploadManager = $uploadManager;
+    }
+
     public function uploadAction()
     {
         $form = new UploadForm('upload');
@@ -23,13 +40,15 @@ class UploadController extends AbstractActionController
                 $data = $form->getData();
 
                 $root = $data['excel-file']["tmp_name"];
-                $formate = new FormattedController();
-                $formate->rewriteMedicalDB($root);
-                return $this->redirect()->toRoute('fileisload', ['action' => 'fileIsLoad']);
+                $aploadManager = new UploadManager($this->entityManager);
+                $aploadManager->rewriteMedicalDB($root);
+                return $this->redirect()->toRoute('upload', ['action' => 'isload']);
             }
         }
         return new ViewModel([
             'form' => $form
         ]);
     }
+
+
 }

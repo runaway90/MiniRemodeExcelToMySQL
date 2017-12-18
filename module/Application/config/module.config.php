@@ -7,9 +7,10 @@
 
 namespace Application;
 
-use Application\Controller\FormattedController;
 use Application\Controller\ListOfMedicament\AddToDBController;
 use Application\Controller\ListOfMedicament\AddToDBFactory;
+use Application\Controller\UploadProcess\UploadFactory;
+use Application\Controller\UploadProcess\UploadManagerFactory;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
@@ -33,21 +34,12 @@ return [
                 'options' => [
                     'route'    => '/upload',
                     'defaults' => [
-                        'controller' => Controller\UploadController::class,
+                        'controller' => Controller\UploadProcess\UploadController::class,
                         'action'     => 'upload',
                     ],
                 ],
             ],
-            'fileisload' => [
-                'type' => Literal::class,
-                'options' => [
-                    'route'    => '/fileisload',
-                    'defaults' => [
-                        'controller' => Controller\FileIsLoadController::class,
-                        'action'     => 'fileIsLoad',
-                    ],
-                ],
-            ],
+
             'application' => [
                 'type'    => Segment::class,
                 'options' => [
@@ -63,10 +55,9 @@ return [
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
-            Controller\UploadController::class => InvokableFactory::class,
+            Controller\UploadProcess\UploadController::class => UploadFactory::class,
             AddToDBController::class => AddToDBFactory::class,
-            Controller\FormattedController::class => InvokableFactory::class,
-            Controller\FileIsLoadController::class => InvokableFactory::class,
+            Controller\UploadProcess\UploadManager::class => UploadManagerFactory::class,
 
         ],
     ],
@@ -81,8 +72,7 @@ return [
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
-            'application/upload/upload' => __DIR__ . '/../view/application/index/upload.phtml',
-            'application/file-is-load/file-is-load' => __DIR__ . '/../view/application/index/fileisload.phtml',
+            'application/upload-process/upload/upload' => __DIR__ . '/../view/application/index/upload.phtml',
 
         ],
         'template_path_stack' => [
@@ -106,6 +96,7 @@ return [
     'service_manager' => [
         'factories' => [
             AddToDBController::class => AddToDBFactory::class,
+            Controller\UploadProcess\UploadManager::class => UploadManagerFactory::class,
         ],
     ],
 ];
