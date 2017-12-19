@@ -9,7 +9,7 @@ class MainController extends AbstractRestfulController
     public function apiAction()
     {
         $em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
-        $testEntity = $em->getRepository('v1\Entity\Test')->findAll();
+        $testEntity = $em->getRepository('Test')->findAll();
 
         foreach ($testEntity as $entity) {
            $array[] = $entity->getJsonData();
