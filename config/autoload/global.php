@@ -20,10 +20,11 @@ return [
                     'driverClass' => Driver::class,
                     'params' => [
                         'port' => '33061',
-                        'host' => 'localhost',
+                        'host' => '127.0.0.1',
                         'user' => 'root',
                         'password' => 'root',
                         'dbname' => 'excel',
+                        'unix_socket' => '/var/run/mysqld/mysqld.sock '
                     ],
                 ],
             ],

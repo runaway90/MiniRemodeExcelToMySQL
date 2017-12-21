@@ -2,6 +2,7 @@
 
 namespace Application\Controller\UploadProcess;
 
+use Application\Entity\ListOfConcurrent;
 use Application\Entity\ListOfMedicament;
 use Doctrine\ORM\EntityManager;
 
@@ -27,47 +28,50 @@ class UploadManager
 
         foreach($rows as $row){
             $cellIterator = $row->getCellIterator();
-            $item = [];
+            $medicament = [];
 
             foreach($cellIterator as $cell){
                 $withoutsymbols =  strtr($cell->getCalculatedValue(),"®",'');
                 $formcell = explode(",",$withoutsymbols);
-                array_push($item, $formcell);
+                array_push($medicament, $formcell);
             }
-            var_dump($item);
-            //die;
-            $list = new ListOfMedicament();
-            $list->setName($item[0]);
-            $list->setIdConcurrent($item[1]);
+            //var_dump($medicament);
+            $listMedicament = new ListOfMedicament();
+            $listMedicament->setName($medicament[0]);
+            $listMedicament->setIdConcurrent($medicament[1]);
 
-            $this->entityManager->persist($list);
-            $this->entityManager->flush();
+            //$this->entityManager->persist($listMedicament);
+            //$this->entityManager->flush();
 
         }
+            //var_dump($item);
+            //die();
 
         $aSheet = $objPHPExcel->getSheetByName('list_of_concurrent');
         $rows = $aSheet->getRowIterator();
 
         foreach($rows as $row){
             $cellIterator = $row->getCellIterator();
-            $item = [];
+            $concurrent = [];
 
             foreach($cellIterator as $cell){
                 $withoutsymbols =  strtr($cell->getCalculatedValue(),"®",'');
                 $formcell = explode(",",$withoutsymbols);
-                array_push($item, $formcell);
+                array_push($concurrent, $formcell);
             }
 
-            /**
-             * Doctrine entity manager.
-             * @var $entityManager EntityManager
-             */
-            $addToTable = new AddToDBController($entityManager);
-            $addToTable->addNewInfoToListOfConcurrent($item);
+            var_dump($concurrent);
+            $listConcurrent = new ListOfConcurrent();
+            $listConcurrent->getName($concurrent[0]);
+            $listConcurrent->getIngrid($concurrent[1]);
+            $listConcurrent->getNameConcurrent($concurrent[2]);
+
+            $this->entityManager->persist($listConcurrent);
+            $this->entityManager->flush();
+
         }
 
     }
-
 
     public function rebuildString($cell)
     {
