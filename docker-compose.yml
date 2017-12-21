@@ -1,7 +1,8 @@
 zf:
-  build: .
-  dockerfile: Dockerfile
-  ports:
-   - "8089:80"
-  volumes:
-   - .:/var/www
+    build: .
+    dockerfile: Dockerfile
+    ports:
+     - "8089:80"
+    volumes:
+     - .:/var/www
+

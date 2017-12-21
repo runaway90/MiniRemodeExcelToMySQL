@@ -1,8 +1,8 @@
 <?php
 namespace Controller\MicroserviceAPI;
 
-use Zend\Mvc\Controller\AbstractRestfulController,
-    Zend\View\Model\JsonModel;
+use Zend\Mvc\Controller\AbstractRestfulController;
+use Zend\View\Model\JsonModel;
 
 class MainController extends AbstractRestfulController
 {

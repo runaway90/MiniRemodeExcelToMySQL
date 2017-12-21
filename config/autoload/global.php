@@ -11,13 +11,15 @@
  * file.
  */
 
+use Doctrine\DBAL\Driver\PDOMySql\Driver;
+
 return [
         'doctrine' => [
             'connection' => [
                 'orm_default' => [
-                    'driverClass' => \Doctrine\DBAL\Driver\PDOMySql\Driver::class,
+                    'driverClass' => Driver::class,
                     'params' => [
-                        'port' => '3306',
+                        'port' => '33061',
                         'host' => 'localhost',
                         'user' => 'root',
                         'password' => 'root',
