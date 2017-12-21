@@ -1,8 +1,22 @@
-zf:
-    build: .
-    dockerfile: Dockerfile
-    ports:
-     - "8089:80"
-    volumes:
-     - .:/var/www
+version: '2'
+services:
+   zf:
+     build:
+       context: .
+       dockerfile: Dockerfile
+     volumes:
+       - .:/var/www
+     ports:
+       - "8089:80"
 
+   db:
+     image: mysql:5.6
+     volumes:
+       - .:/var/www/mysql
+     environment:
+       - "MYSQL_DATABASE=excel"
+       - "MYSQL_USER=root"
+       - "MYSQL_PASSWORD=root"
+       - "MYSQL_ROOT_PASSWORD=root"
+     ports:
+       - "33061:3306"
