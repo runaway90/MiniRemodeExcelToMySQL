@@ -10,24 +10,16 @@ services:
        - "8089:80"
      links:
       - db
-      - doctrine
 
    db:
-     image: mysql:5.6
+     image: mysql:5.7
      volumes:
        - .:/var/www/html
      environment:
        - "MYSQL_DATABASE=excel"
-       - "MYSQL_USER=root"
-       - "MYSQL_PASSWORD=root"
-       - "MYSQL_ROOT_PASSWORD=root"
+       - "MYSQL_USER=adserverplus"
+       - "MYSQL_PASSWORD=ap++"
        - "MYSQL_UNIX_SOCKET=/var/run/mysqld/mysqld.sock"
+       - "MYSQL_ALLOW_EMPTY_PASSWORD=yes"
      ports:
-       - "33061:3306"
-
-   doctrine:
-     build:
-       context: .
-       dockerfile: docker/Doctrine/Dockerfile
-     volumes:
-       - .:/var/www
+       - "3306"

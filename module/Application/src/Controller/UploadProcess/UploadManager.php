@@ -62,15 +62,14 @@ class UploadManager
 
             var_dump($concurrent);
             $listConcurrent = new ListOfConcurrent();
-            $listConcurrent->getName($concurrent[0]);
-            $listConcurrent->getIngrid($concurrent[1]);
-            $listConcurrent->getNameConcurrent($concurrent[2]);
+            $listConcurrent->setName($concurrent[0]);
+            $listConcurrent->setIngrid($concurrent[1]);
+            $listConcurrent->setNameConcurrent($concurrent[2]);
 
             $this->entityManager->persist($listConcurrent);
             $this->entityManager->flush();
 
         }
-
     }
 
     public function rebuildString($cell)

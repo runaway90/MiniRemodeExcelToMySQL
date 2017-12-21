@@ -11,22 +11,6 @@
  * file.
  */
 
-use Doctrine\DBAL\Driver\PDOMySql\Driver;
-
 return [
-        'doctrine' => [
-            'connection' => [
-                'orm_default' => [
-                    'driverClass' => Driver::class,
-                    'params' => [
-                        'port' => '33061',
-                        'host' => '127.0.0.1',
-                        'user' => 'root',
-                        'password' => 'root',
-                        'dbname' => 'excel',
-                        'unix_socket' => '/var/run/mysqld/mysqld.sock '
-                    ],
-                ],
-            ],
-        ],
+
 ];
